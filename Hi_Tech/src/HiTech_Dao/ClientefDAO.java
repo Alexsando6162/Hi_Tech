@@ -25,8 +25,8 @@ public class ClientefDAO {
         return SimulaBD.getInstance().Salvarcliente(k); 
     }
 
-    public static boolean excluir(int id) {
-         return SimulaBD.getInstance().ExcluirCliente(id); 
+    public static boolean excluir(String cpf) {
+         return SimulaBD.getInstance().ExcluirCliente(cpf); 
     }
 
     public static boolean atualizar(Clientef k) {
@@ -36,7 +36,7 @@ public class ClientefDAO {
     public static ArrayList<Clientef> getClientef() {
         return SimulaBD.getInstance().getClientef(); 
     }
-    public static ArrayList <Clientef> getClientefs() {
-        return SimulaBD.getInstance().getClientef();
-    }
+//    public static ArrayList <Clientef> getClientefs() {
+//        return SimulaBD.getInstance().getClientef();
+//    }
 }
