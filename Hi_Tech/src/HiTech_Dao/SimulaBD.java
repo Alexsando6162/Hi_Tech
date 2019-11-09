@@ -6,7 +6,7 @@
 package HiTech_Dao;
 
 import HiTech_Model.Clientef;
-import HiTech_Model.Instrumentos;
+import HiTech_Model.Produtos;
 import HiTech_Model.Vendas;
 import java.util.ArrayList;
 import java.sql.DriverManager;
@@ -22,7 +22,7 @@ public class SimulaBD {
      
      private ArrayList<Clientef> Clientesfisicos;
     
-      private ArrayList<Instrumentos> Produtos;
+      private ArrayList<Produtos> Produto;
       
       private ArrayList<Vendas> DataVendas;
       
@@ -31,7 +31,7 @@ public class SimulaBD {
           
           Clientesfisicos = new ArrayList<Clientef>();
           
-          Produtos = new ArrayList<Instrumentos>();
+          Produto = new ArrayList<Produtos>();
           
           DataVendas = new ArrayList<Vendas>();
           
@@ -56,9 +56,8 @@ public class SimulaBD {
     
     public boolean AtualizarCliente( Clientef k){
         
-        
         for( Clientef item : Clientesfisicos){
-            if(item.getId() == k.getId()){
+            if(item.getCpf()== k.getCpf()){
                 item.setNome(k.getNome());
                 item.setCpf(k.getCpf());
                 item.setDatadenascimento(k.getDatadenascimento());
@@ -69,19 +68,19 @@ public class SimulaBD {
                 item.setCidade(k.getCidade());
                 item.setEstado(k.getEstado());
                 item.setEmail(k.getEmail());
-                
+                item.setTelefone(k.getTelefone());
             }
         }
         return true;
     }
 
-    public boolean ExcluirCliente(int i){
+    public boolean ExcluirCliente(String i){
         Clientef Excluir = new Clientef();
         boolean presenteAqui= false;
         
         for(Clientef x: Clientesfisicos){
             
-            if(x.getId() == i){
+            if(x.getCpf()== i){
                 Excluir = x;
                 presenteAqui = true;
             }
@@ -95,49 +94,50 @@ public class SimulaBD {
     
     
     
-    public boolean SalvarProduto(Instrumentos k){
+    public boolean SalvarProduto(Produtos k){
       
-        Produtos.add(k);
+        Produto.add(k);
         return true;
     }
-    public ArrayList<Instrumentos> getInstrumentos(){
-        return this.Produtos;
+    public ArrayList<Produtos> getProdutos(){
+        return this.Produto;
     }
     
-    public boolean AtualizarProduto(Instrumentos k){
+    public boolean AtualizarProduto(Produtos k){
         
-        for( Instrumentos item3: Produtos){
-            if(item3.getId1() == k.getId1()){
-                item3.setModalidade1(k.getModalidade1());
-                item3.setValor1(k.getValor1());
-                item3.setQuantidade1(k.getQuantidade1());
+        for( Produtos item: Produto){
+            if(item.getCodBarras()== k.getCodBarras()){
+                item.setCategoria(k.getCategoria());
+                item.setCodBarras(k.getCodBarras());
+                item.setDescricao(k.getDescricao());
+                item.setMarca(k.getMarca());
+                item.setQuantidade(k.getQuantidade());
+                item.setValor(k.getValor());
             }
         }
         return true;
     }
     
-    public boolean ExcluirProduto(int i){
+    public boolean ExcluirProduto(String i){
         
-        Instrumentos DeletaInstrumento = new Instrumentos();
+        Produtos DeletaInstrumento = new Produtos();
         
         boolean presenteAqui = false;
         
-        for( Instrumentos y: Produtos){
-            if(y.getId1() == i){
-                DeletaInstrumento = y;
+        for( Produtos p: Produto){
+            if(p.getCodBarras() == i){
+                DeletaInstrumento = p;
                 presenteAqui = true;
-                
             }
-            
         }
         if(presenteAqui){
-            Produtos.remove(DeletaInstrumento);
+            Produto.remove(DeletaInstrumento);
         }
-    
     
     return true;
 }
    
+    
     
     public boolean Salvar(Vendas l){
         DataVendas.add(l);

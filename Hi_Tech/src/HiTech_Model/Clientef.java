@@ -3,14 +3,9 @@ package HiTech_Model;
 
 
 public class Clientef {
-
-    /**
-     * @return the telefone
-     */
-    
    
-    private static int Clientesfcriados;
-    private int id;
+    //private static int Clientesfcriados;
+   // private int id;
     private String nome;
     private String cpf;
     private String datadenascimento;
@@ -22,22 +17,19 @@ public class Clientef {
     private String estado;
     private String email;
     private String telefone;
+
+    public Clientef() {
+        //To change body of generated methods, choose Tools | Templates.
+    }
+
    
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome.toLowerCase();
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String fnome) {
+        this.nome = fnome;
     }
 
     public String getCpf() {
@@ -116,19 +108,16 @@ public class Clientef {
         return telefone;
     }
     
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelefone(String ftelefone) {
+        this.telefone = ftelefone;
     }
    
-    public Clientef(){
-        Clientesfcriados++;
-        this.id = Clientesfcriados;  
-    }
+
     
     public Clientef( String nome, String cpf, String datadenascimento, String sexo,String endereco, String numero,String bairro, String cidade, String estado,String email, String telefone){ 
     
-     Clientesfcriados++;  
-     this.id = Clientesfcriados;
+//     Clientesfcriados++;  
+//     this.id = Clientesfcriados;
      this.nome = nome;
      this.cpf = cpf;
      this.datadenascimento = datadenascimento;
@@ -142,9 +131,11 @@ public class Clientef {
      this.telefone = telefone;
 }
     
-    public Clientef ( int id, String fnome, String fcpf, String fdatadenascimento, String fsexo,String fendereco, String fnumero,String fbairro, String fcidade, String festado,String femail, String ftelefone){
+    public Clientef (int id, String fnome, String fcpf, String fdatadenascimento, 
+                 String fsexo, String fendereco, String fnumero,String fbairro,
+                 String fcidade, String festado,String femail, String ftelefone){
         
-     this.id = id;
+     this.nome = fnome;
      this.cpf = fcpf;
      this.datadenascimento = fdatadenascimento;
      this.sexo = fsexo;

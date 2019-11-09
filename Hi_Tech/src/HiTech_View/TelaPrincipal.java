@@ -5,7 +5,7 @@
  */
 package HiTech_View;
 
-import HiTech_View.AlterarCadatroCliente;
+import HiTech_View.CadastroCliente;
 import HiTech_View.CadastroProduto;
 import HiTech_View.venda;
 import java.awt.Dimension;
@@ -544,7 +544,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         this.lblImagemIN.setIcon(new ImageIcon(getClass().getResource("/Imagens/Usuarioss.png")));
 
-        AlterarCadatroCliente frameInterno = new AlterarCadatroCliente();
+        CadastroCliente frameInterno = new CadastroCliente();
         frameInterno.setPreferredSize(new Dimension(840,500));
 
         frameInterno.setVisible(true);
@@ -553,8 +553,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         frameInterno.pack();
         
-        AlterarCadatroCliente car = new AlterarCadatroCliente();
-        car.carregarT();
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
     private void btnEfetuarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfetuarVendasActionPerformed
