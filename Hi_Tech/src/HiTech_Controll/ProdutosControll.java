@@ -43,9 +43,16 @@ public class ProdutosControll {
     
     public static ArrayList<Produtos> retornaInstrumentos(){
         
-        ArrayList<Produtos> produtos = ProdutosDAO.getProdutos();
+        ArrayList<Produtos> produto = ProdutosDAO.getProdutos();
         
-        return produtos;
+        return produto;
     }
 
+    public static class getProdutos extends ArrayList<String[]> {
+        public getProdutos() {
+        } 
+    }
+
+    
+    
 }

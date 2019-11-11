@@ -31,8 +31,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         
+        this.habilitar();
     }
-
+    
+    public void desabilitar(){
+        btnCadastrarCliente.setEnabled(false);
+        btnCadastrarProduto.setEnabled(false);
+        btnEfetuarVendas.setEnabled(false);
+    }
+    public void habilitar(){
+        btnCadastrarCliente.setEnabled(true);
+        btnCadastrarProduto.setEnabled(true);
+        btnEfetuarVendas.setEnabled(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -553,6 +565,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         frameInterno.pack();
         
+        try {
+            frameInterno.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        desabilitar();
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
     private void btnEfetuarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfetuarVendasActionPerformed
@@ -568,6 +592,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jdpTelas.add(frameInterno);
 
         frameInterno.pack();
+        
+        try {
+            frameInterno.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btnEfetuarVendasActionPerformed
 
@@ -590,6 +620,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jdpTelas.add(frameInterno);
         
         frameInterno.pack();
+        
+        try {
+            frameInterno.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
 

@@ -5,7 +5,11 @@
  */
 package HiTech_View;
 
+import HiTech_Controll.ProdutosControll;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -71,7 +75,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         jpnProdutos = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProdutos = new javax.swing.JTable();
         lblValor = new javax.swing.JLabel();
         txtValor = new javax.swing.JTextField();
         lblQTDadicional = new javax.swing.JLabel();
@@ -175,17 +179,32 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
 
         btnEditQtdValor.setText("Editar QTD e Valor");
         btnEditQtdValor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnEditQtdValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditQtdValorActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnVoltar.setText("Voltar");
         btnVoltar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -193,7 +212,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
                 "Descrição", "Marca", "Quantidade", "valor"
             }
         ));
-        jpnProdutos.setViewportView(jTable1);
+        jpnProdutos.setViewportView(tblProdutos);
 
         lblValor.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblValor.setText("Valor:");
@@ -223,6 +242,11 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
 
         btnExcluir.setText("Excluir");
         btnExcluir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         lblCodigoBarras.setText("Codigo de barra:");
 
@@ -238,7 +262,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
                     .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditQtdValor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, Short.MAX_VALUE)
+                    .addComponent(btnEditQtdValor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,10 +407,73 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
         modoTela = "Criar";
-        
+
+        LimparFor();
+        HabilitarFor();
         
     }//GEN-LAST:event_btnNovoActionPerformed
 
+    private void btnEditQtdValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditQtdValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditQtdValorActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        
+        if(validarFor()){
+            
+            if(modoTela.equals("Criar")){
+                if(ProdutosControll.salvar(bgpGrupoCategoria.getSelection().getActionCommand(), txtCodigoBarras.getText(), txtDescricao.getText(),
+                                         txtMarca.getText(), txtQTD.getText(), txtValor.getText())){
+                    
+                    CarregarT();
+                    JOptionPane.showMessageDialog(null, "Produto cadastrado!");
+                }else{
+                    
+                }
+                
+            }
+            
+            
+        }
+        
+        
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    
+    
+    public void CarregarT(){
+        
+        ArrayList<String[]> linhasProd = new ProdutosControll.getProdutos();
+        
+        DefaultTableModel tmProdutos = new DefaultTableModel();
+        
+        tmProdutos.addColumn("Categoria");
+        tmProdutos.addColumn("Cod Barras");
+        tmProdutos.addColumn("Descrição");
+        tmProdutos.addColumn("Marca");
+        tmProdutos.addColumn("QTD");
+        tmProdutos.addColumn("Valor");
+        tblProdutos.setModel(tmProdutos);
+        
+        for(String[] P:linhasProd){
+            tmProdutos.addRow(P);
+        }
+        
+        
+    }
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgpGrupoCategoria;
@@ -399,7 +486,6 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JScrollPane jpnProdutos;
     private javax.swing.JLabel lblCodigoBarras;
     private javax.swing.JLabel lblDescricao;
@@ -412,6 +498,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rdbPercussao;
     private javax.swing.JRadioButton rdbSopro;
     private javax.swing.JRadioButton rdbTeclas;
+    private javax.swing.JTable tblProdutos;
     private javax.swing.JTextField txtCodigoBarras;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtMarca;
@@ -421,5 +508,36 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
+    
+    public boolean validarFor(){
+    
+     if(this.bgpGrupoCategoria.getButtonCount() == 0){
+         JOptionPane.showMessageDialog(null, "Categoria não selecionada!");
+         return false;
+      }
+     if(this.txtDescricao.getText().equalsIgnoreCase("")){
+         JOptionPane.showMessageDialog(null, "Campo descrição incompleto! ");
+         return false;
+     }
+     if(this.txtMarca.getText().equalsIgnoreCase("")){
+         JOptionPane.showMessageDialog(null, "Campo marca incompleto! ");
+         return false;
+     }
+     if(this.txtQTD.getText().equalsIgnoreCase("")){
+         JOptionPane.showMessageDialog(null, "Campo quantidade incompleto! ");
+         return false;
+     }
+     if(this.txtCodigoBarras.getText().equalsIgnoreCase("")){
+         JOptionPane.showMessageDialog(null, "Campo codigo de barras incompleto! ");
+         return false;
+     }
+     if(this.txtValor.getText().equalsIgnoreCase("")){
+         JOptionPane.showMessageDialog(null, "Campo valor incompleto! ");
+         return false;
+     }
+     
+         
+      return true;   
+     }
 
 }
