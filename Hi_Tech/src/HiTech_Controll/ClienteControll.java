@@ -40,8 +40,8 @@ public class ClienteControll {
     return Clientesfisicos;
     }
 
-public static ArrayList<Clientef> retornaListClienteF(){
-ArrayList<Clientef> clientes = ClientefDAO.getClientef();
-return clientes;
+     public static ArrayList<Clientef> retornaListClienteF(){
+           ArrayList<Clientef> clientes = ClientefDAO.getClientef();
+           return clientes;
 }
 }

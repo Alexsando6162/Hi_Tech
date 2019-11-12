@@ -514,7 +514,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(this," Erro ao Excluir! " );
 
                 }
-            } else{ JOptionPane.showMessageDialog(this," Não há clientes para excluir!");
+            } else{ JOptionPane.showMessageDialog(this," Nenhum cliente para excluir!");
             }
 
     }//GEN-LAST:event_btnExcluirActionPerformed
@@ -541,10 +541,10 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
                 txtEmail.setText(tblCliente.getModel().getValueAt(tblCliente.getSelectedRow(), 9).toString());
 
             } else {
-                JOptionPane.showMessageDialog(this, "Clique para editar");
+                JOptionPane.showMessageDialog(this, "Clique para editar!");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Não foi possível editar");
+            JOptionPane.showMessageDialog(this, "Nenhum Cliente para editar!");
         }
 
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -637,7 +637,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
             
             for(String[] l:linhasCliente){
                 tmCliente.addRow(l);
-                
             }
             
             

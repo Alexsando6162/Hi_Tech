@@ -557,6 +557,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.lblImagemIN.setIcon(new ImageIcon(getClass().getResource("/Imagens/Usuarioss.png")));
 
         CadastroCliente frameInterno = new CadastroCliente();
+        
+        
         frameInterno.setPreferredSize(new Dimension(840,500));
 
         frameInterno.setVisible(true);
@@ -571,7 +573,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        desabilitar();
+        
         
         
         

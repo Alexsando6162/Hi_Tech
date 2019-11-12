@@ -33,7 +33,8 @@ public class ProdutosControll {
         
         for(int i=0; i<produtoIns.size(); i++){
             Produto.add(new String[]{produtoIns.get(i).getCategoria(),String.valueOf(produtoIns.get(i).getCodBarras()),
-                produtoIns.get(i).getDescricao(),produtoIns.get(i).getMarca(), produtoIns.get(i).getValor()  });
+                produtoIns.get(i).getDescricao(),produtoIns.get(i).getMarca(),String.valueOf(produtoIns.get(i).getQuantidade()),
+                String.valueOf(produtoIns.get(i).getValor())});
                 
             }
    
@@ -41,17 +42,19 @@ public class ProdutosControll {
     }
     
     
-    public static ArrayList<Produtos> retornaInstrumentos(){
+    public static ArrayList<Produtos> retornaListProdutos(){
         
-        ArrayList<Produtos> produto = ProdutosDAO.getProdutos();
+        ArrayList<Produtos> Produto = ProdutosDAO.getProdutos();
         
-        return produto;
+        return Produto;
     }
 
-    public static class getProdutos extends ArrayList<String[]> {
-        public getProdutos() {
-        } 
-    }
+//    public static class getProdutos extends ArrayList<String[]> {
+//        public getProdutos() {
+//            
+//            
+//        } 
+//    }
 
     
     

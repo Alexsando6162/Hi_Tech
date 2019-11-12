@@ -18,11 +18,14 @@ import javax.swing.table.DefaultTableModel;
 public class CadastroProduto extends javax.swing.JInternalFrame {
     
     private String modoTela;
-    private int categoria;
+    private String categoria;
     
     
     public CadastroProduto() {
         initComponents();
+        
+        desabilitarFor();
+        CarregarT();
     }
     
     public void LimparFor(){
@@ -33,14 +36,21 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         txtValor.setText("");
         txtQTDadicional.setText("");
     }
-    
     public void HabilitarFor(){
-        //bgpGrupoCategoria.setSelected(bm, isIcon);
+        //bgpGrupoCategoria.setSelected();
         txtDescricao.setEditable(true);
         txtMarca.setEditable(true);
         txtCodigoBarras.setEditable(true);
         txtQTD.setEditable(true);
         txtValor.setEditable(true);
+    }
+    public void desabilitarFor(){
+        //bgpGrupoCategoria.setSelected(bm, isIcon);
+        txtDescricao.setEditable(false);
+        txtMarca.setEditable(false);
+        txtCodigoBarras.setEditable(false);
+        txtQTD.setEditable(false);
+        txtValor.setEditable(false);
     }
     
     
@@ -382,25 +392,25 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
 
     private void rdbCordasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbCordasActionPerformed
         // TODO add your handling code here:
-        categoria = 1;
+        categoria = "Cordas";
         this.lblImagemProduto.setIcon(new ImageIcon(getClass().getResource("/Imagens/corda.png")));
     }//GEN-LAST:event_rdbCordasActionPerformed
 
     private void rdbTeclasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbTeclasActionPerformed
         // TODO add your handling code here:
-        categoria = 2;
+        categoria = "Teclas";
         this.lblImagemProduto.setIcon(new ImageIcon(getClass().getResource("/Imagens/tecla.png")));
     }//GEN-LAST:event_rdbTeclasActionPerformed
 
     private void rdbSoproActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbSoproActionPerformed
         // TODO add your handling code here:
-        categoria = 3;
+        categoria = "Sopro";
         this.lblImagemProduto.setIcon(new ImageIcon(getClass().getResource("/Imagens/sopro.png")));
     }//GEN-LAST:event_rdbSoproActionPerformed
 
     private void rdbPercussaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbPercussaoActionPerformed
         // TODO add your handling code here:
-        categoria = 4;
+        categoria = "Percussão";
         this.lblImagemProduto.setIcon(new ImageIcon(getClass().getResource("/Imagens/percussao.png")));
     }//GEN-LAST:event_rdbPercussaoActionPerformed
 
@@ -412,13 +422,55 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         HabilitarFor();
         
     }//GEN-LAST:event_btnNovoActionPerformed
-
+    
     private void btnEditQtdValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditQtdValorActionPerformed
         // TODO add your handling code here:
+        
+        if(tblProdutos.getRowCount() > 0 ){
+            
+            if(tblProdutos.getSelectedRow() >= 0 ){
+                HabilitarFor();
+                modoTela = "Editar";
+                
+                
+                txtDescricao.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),0).toString());
+                txtMarca.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(), 1).toString());
+                txtQTD.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),2).toString());
+                txtCodigoBarras.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),3).toString());
+                txtValor.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),4).toString());
+            
+            }else{
+                JOptionPane.showMessageDialog(null, "Clique para editar!");
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Nenhum produto para editar!");
+        }
+        
     }//GEN-LAST:event_btnEditQtdValorActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
+        
+        if(tblProdutos.getRowCount() > 0){
+            int num_linhas = tblProdutos.getSelectedRow();
+            if(num_linhas < 0){
+                JOptionPane.showMessageDialog(null, "Selecione o Produto!");
+                return;
+            }
+            
+            String excluir = tblProdutos.getModel().getValueAt(num_linhas, 1).toString();
+            if(ProdutosControll.excluir(excluir)){
+                this.CarregarT();
+                JOptionPane.showMessageDialog(null, "Produto excluido!");
+            }else{
+               JOptionPane.showMessageDialog(null, "Erro ao excluir!");
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Nenhum produto Cadastrado!");
+        }
+        
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -427,22 +479,31 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
-        
+//        String categori = "";
+//        categori = bgpGrupoCategoria.getSelection().getActionCommand();
         if(validarFor()){
-            
             if(modoTela.equals("Criar")){
-                if(ProdutosControll.salvar(bgpGrupoCategoria.getSelection().getActionCommand(), txtCodigoBarras.getText(), txtDescricao.getText(),
-                                         txtMarca.getText(), txtQTD.getText(), txtValor.getText())){
+                if(ProdutosControll.salvar(categoria, txtCodigoBarras.getText(), 
+                                          txtDescricao.getText(), txtMarca.getText(), txtQTD.getText(), txtValor.getText())){
                     
                     CarregarT();
                     JOptionPane.showMessageDialog(null, "Produto cadastrado!");
                 }else{
-                    
+                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar");
                 }
                 
+            }else{
+                if(ProdutosControll.atualizar(bgpGrupoCategoria.getSelection().getActionCommand(), txtCodigoBarras.getText(), 
+                                          txtDescricao.getText(), txtMarca.getText(), txtQTD.getText(), txtValor.getText())){
+                    
+                    CarregarT();
+                    JOptionPane.showMessageDialog(null, "Produto atualizado!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Erro ao atualizar");
+                }
             }
-            
-            
+            LimparFor();
+            desabilitarFor();
         }
         
         
@@ -452,7 +513,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     
     public void CarregarT(){
         
-        ArrayList<String[]> linhasProd = new ProdutosControll.getProdutos();
+        ArrayList<String[]> linhasProd = ProdutosControll.getProdutos();
         
         DefaultTableModel tmProdutos = new DefaultTableModel();
         

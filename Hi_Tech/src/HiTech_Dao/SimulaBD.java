@@ -99,6 +99,7 @@ public class SimulaBD {
         Produto.add(k);
         return true;
     }
+    
     public ArrayList<Produtos> getProdutos(){
         return this.Produto;
     }
