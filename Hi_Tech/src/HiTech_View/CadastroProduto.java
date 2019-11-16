@@ -19,6 +19,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     
     private String modoTela;
     private String categoria;
+    TelaPrincipal tela;
     
     
     public CadastroProduto() {
@@ -37,7 +38,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         txtQTDadicional.setText("");
     }
     public void HabilitarFor(){
-        //bgpGrupoCategoria.setSelected();
+        //bgpGrupoCategoria.setSelected(, true);
         txtDescricao.setEditable(true);
         txtMarca.setEditable(true);
         txtCodigoBarras.setEditable(true);
@@ -433,11 +434,11 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
                 modoTela = "Editar";
                 
                 
-                txtDescricao.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),0).toString());
-                txtMarca.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(), 1).toString());
-                txtQTD.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),2).toString());
-                txtCodigoBarras.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),3).toString());
-                txtValor.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),4).toString());
+                txtCodigoBarras.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),1).toString());
+                txtMarca.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(), 2).toString());
+                txtQTD.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),3).toString());
+                txtDescricao.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),4).toString());
+                txtValor.setText(tblProdutos.getModel().getValueAt(tblProdutos.getSelectedRow(),5).toString());
             
             }else{
                 JOptionPane.showMessageDialog(null, "Clique para editar!");
@@ -475,6 +476,9 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
+        dispose();
+        tela.habilitarBotoes = true;
+        tela.alternarBotoes();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
