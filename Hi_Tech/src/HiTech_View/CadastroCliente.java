@@ -15,7 +15,7 @@ import javax.swing.table.TableRowSorter;
 public class CadastroCliente extends javax.swing.JInternalFrame {
     
     private String modoTela;
-    TelaPrincipal tela;
+    
     //private String Selecao;
     
     
@@ -616,9 +616,8 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         
-        tela.habilitarBotoes = true;
-        tela.alternarBotoes();
-        dispose();
+
+        
     }//GEN-LAST:event_btnVoltarActionPerformed
 
         public void carregarT(){

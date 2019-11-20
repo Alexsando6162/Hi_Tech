@@ -21,7 +21,7 @@ import javax.swing.JFrame;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    public boolean habilitarBotoes = true;
+    //public boolean habilitarBotoes = true;
     
     public TelaPrincipal() {
         initComponents();
@@ -30,29 +30,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         
-        this.habilitar();
+        
     }
     
     
     
-    public void alternarBotoes(){
-        if(habilitarBotoes == true){
-          
-          btnCadastrarCliente.setEnabled(true);
-          btnCadastrarProduto.setEnabled(true);
-          btnEfetuarVendas.setEnabled(true);
-        }else{
-          btnCadastrarCliente.setEnabled(false);
-          btnCadastrarProduto.setEnabled(false);
-          btnEfetuarVendas.setEnabled(false);
-        }
-    }
-    
-    public void habilitar(){
-        btnCadastrarCliente.setEnabled(true);
-          btnCadastrarProduto.setEnabled(true);
-          btnEfetuarVendas.setEnabled(true);
-    }
+   
     
     
     @SuppressWarnings("unchecked")
@@ -577,8 +560,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         
         
-        this.habilitarBotoes = false;
-        alternarBotoes();
+//        this.habilitarBotoes = false;
+//        alternarBotoes();
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
     private void btnEfetuarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfetuarVendasActionPerformed
@@ -601,8 +584,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         
         
-        this.habilitarBotoes = false;
-        alternarBotoes();
+//        this.habilitarBotoes = false;
+//        alternarBotoes();
     }//GEN-LAST:event_btnEfetuarVendasActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -630,8 +613,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         
         
-        this.habilitarBotoes = false;
-        alternarBotoes();
+//        this.habilitarBotoes = false;
+//        alternarBotoes();
     }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
 
     /**

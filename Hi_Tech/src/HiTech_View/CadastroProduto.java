@@ -19,7 +19,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     
     private String modoTela;
     private String categoria;
-    TelaPrincipal tela;
+    
     
     
     public CadastroProduto() {
@@ -477,9 +477,8 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
         
-        tela.habilitarBotoes = true;
-        tela.alternarBotoes();
-        dispose();
+
+        
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
