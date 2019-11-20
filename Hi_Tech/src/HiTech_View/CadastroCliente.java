@@ -15,7 +15,7 @@ import javax.swing.table.TableRowSorter;
 public class CadastroCliente extends javax.swing.JInternalFrame {
     
     private String modoTela;
-    
+    TelaPrincipal tela;
     //private String Selecao;
     
     
@@ -490,9 +490,8 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
-        );
-
+           .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -615,11 +614,13 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
+       
         
-
+        tela.habilitarBotoes = true;
+        tela.alternarBotoes();
         
+        dispose();        
     }//GEN-LAST:event_btnVoltarActionPerformed
-
         public void carregarT(){
         
             ArrayList<String[]> linhasCliente = ClienteControll.getClientef();

@@ -44,17 +44,24 @@ public class ProdutosControll {
     
     public static ArrayList<Produtos> retornaListProdutos(){
         
+
         ArrayList<Produtos> Produto = ProdutosDAO.getProdutos();
         
         return Produto;
     }
 
-//    public static class getProdutos extends ArrayList<String[]> {
-//        public getProdutos() {
-//            
-//            
-//        } 
-//    }
+
+
+        ArrayList<Produtos> produto = ProdutosDAO.getProdutos();
+        
+        return produto;
+    }
+
+    public static class getProdutos extends ArrayList<String[]> {
+        public getProdutos() {
+        } 
+    }
+
 
     
     

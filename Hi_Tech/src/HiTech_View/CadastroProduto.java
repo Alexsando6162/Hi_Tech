@@ -18,8 +18,12 @@ import javax.swing.table.DefaultTableModel;
 public class CadastroProduto extends javax.swing.JInternalFrame {
     
     private String modoTela;
+ 
     private String categoria;
     
+    private int categoria;
+    TelaPrincipal tela;
+ 
     
     
     public CadastroProduto() {
@@ -96,10 +100,6 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         btnExcluir = new javax.swing.JButton();
         lblCodigoBarras = new javax.swing.JLabel();
         txtCodigoBarras = new javax.swing.JTextField();
-
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro Produto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 18))); // NOI18N
 
@@ -481,6 +481,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnVoltarActionPerformed
 
+ 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         // TODO add your handling code here:
 //        String categori = "";
@@ -489,10 +490,37 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
             if(modoTela.equals("Criar")){
                 if(ProdutosControll.salvar(categoria, txtCodigoBarras.getText(), 
                                           txtDescricao.getText(), txtMarca.getText(), txtQTD.getText(), txtValor.getText())){
+
+    private void btnEditQtdValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditQtdValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditQtdValorActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+       tela.habilitarBotoes = true;    
+       tela.alternarBotoes();
+       dispose();
+        
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        
+        if(validarFor()){
+            
+            if(modoTela.equals("Criar")){
+                if(ProdutosControll.salvar(bgpGrupoCategoria.getSelection().getActionCommand(), txtCodigoBarras.getText(), txtDescricao.getText(),
+                                         txtMarca.getText(), txtQTD.getText(), txtValor.getText())){
+ 
                     
                     CarregarT();
                     JOptionPane.showMessageDialog(null, "Produto cadastrado!");
                 }else{
+
                     JOptionPane.showMessageDialog(null, "Erro ao cadastrar");
                 }
                 
@@ -508,6 +536,14 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
             }
             LimparFor();
             desabilitarFor();
+
+                    
+                }
+                
+            }
+            
+            
+ 
         }
         
         
@@ -517,7 +553,11 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     
     public void CarregarT(){
         
+ 
         ArrayList<String[]> linhasProd = ProdutosControll.getProdutos();
+
+        ArrayList<String[]> linhasProd = new ProdutosControll.getProdutos();
+
         
         DefaultTableModel tmProdutos = new DefaultTableModel();
         
