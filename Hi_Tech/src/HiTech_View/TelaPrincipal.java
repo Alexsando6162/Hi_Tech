@@ -20,6 +20,7 @@ import javax.swing.JFrame;
  * @author alexsandro.lsouza1
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+    public boolean habilitarBotoes = true; //  Teste 
 
     /**
      * Creates new form TelaPrincipal
@@ -31,8 +32,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         
+        this.habilitar();
     }
-
+    
+    public void alternarBotoes(){
+        
+        
+        if (habilitarBotoes == true){
+        
+            btnCadastrarCliente.setEnabled(true);
+            btnCadastrarProduto.setEnabled(true);
+            btnEfetuarVendas.setEnabled(true);
+        
+        }else{
+        
+            btnCadastrarCliente.setEnabled(false);
+            btnCadastrarProduto.setEnabled(false);
+            btnEfetuarVendas.setEnabled(false);
+        
+        }
+        
+    }
+    public void habilitar(){
+        
+        btnCadastrarCliente.setEnabled(true);
+        btnCadastrarProduto.setEnabled(true);
+        btnEfetuarVendas.setEnabled(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -545,6 +572,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.lblImagemIN.setIcon(new ImageIcon(getClass().getResource("/Imagens/Usuarioss.png")));
 
         CadastroCliente frameInterno = new CadastroCliente();
+        frameInterno.tela = this;
+        
         frameInterno.setPreferredSize(new Dimension(840,500));
 
         frameInterno.setVisible(true);
@@ -552,6 +581,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jdpTelas.add(frameInterno);
 
         frameInterno.pack();
+        
+        try {
+            frameInterno.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.habilitarBotoes = false;
+        alternarBotoes();
+        
+        
+        
+        
         
     }//GEN-LAST:event_btnCadastrarClienteActionPerformed
 
@@ -562,13 +603,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         venda frameInterno = new venda();
         frameInterno.setPreferredSize(new Dimension(840,500));
+        frameInterno.tela = this;
 
         frameInterno.setVisible(true);
 
         jdpTelas.add(frameInterno);
 
         frameInterno.pack();
-
+        
+        try {
+            frameInterno.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.habilitarBotoes = false;
+        alternarBotoes();
     }//GEN-LAST:event_btnEfetuarVendasActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
@@ -584,12 +633,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         CadastroProduto frameInterno = new CadastroProduto();
         
         frameInterno.setPreferredSize(new Dimension(840,500));
+        frameInterno.tela = this;
         
         frameInterno.setVisible(true);
         
         jdpTelas.add(frameInterno);
         
         frameInterno.pack();
+        
+        try {
+            frameInterno.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.habilitarBotoes = false;
+        alternarBotoes();
         
     }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
 

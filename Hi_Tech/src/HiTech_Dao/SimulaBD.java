@@ -57,7 +57,7 @@ public class SimulaBD {
     public boolean AtualizarCliente( Clientef k){
         
         for( Clientef item : Clientesfisicos){
-            if(item.getCpf()== k.getCpf()){
+            if(item.getCpf().equals(k.getCpf())){
                 item.setNome(k.getNome());
                 item.setCpf(k.getCpf());
                 item.setDatadenascimento(k.getDatadenascimento());

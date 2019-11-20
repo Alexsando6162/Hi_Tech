@@ -15,7 +15,7 @@ import javax.swing.table.TableRowSorter;
 public class CadastroCliente extends javax.swing.JInternalFrame {
     
     private String modoTela;
-    
+    TelaPrincipal tela;
     //private String Selecao;
     
     
@@ -114,11 +114,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-
-        setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setIconifiable(true);
-        setMaximizable(true);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel1.setToolTipText("");
@@ -254,6 +249,11 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         btnVoltar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnVoltar.setText("Voltar");
         btnVoltar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -490,7 +490,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 494, Short.MAX_VALUE)
         );
 
         pack();
@@ -613,22 +613,28 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
-    
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        
+        tela.habilitarBotoes = true;
+        tela.alternarBotoes();
+        
+        dispose();        
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
         public void carregarT(){
         
             ArrayList<String[]> linhasCliente = ClienteControll.getClientef();
             
             DefaultTableModel tmCliente = new DefaultTableModel();
             
-            //tmCliente.addColumn("id_interno");
             tmCliente.addColumn("Nome");
             tmCliente.addColumn("CPF");
             tmCliente.addColumn("Data_Nasc");
             tmCliente.addColumn("Sexo");
             tmCliente.addColumn("Endereço");
             tblCliente.setModel(tmCliente);
-        
-            //tblCliente.removeColumn(tblCliente.getColumnModel().getColumn(0));
+            
             for(String[] l:linhasCliente){
                 tmCliente.addRow(l);
                 
