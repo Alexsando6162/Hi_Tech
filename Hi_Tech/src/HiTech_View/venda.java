@@ -313,6 +313,9 @@ public class venda extends javax.swing.JInternalFrame {
         Categoria = 1;
         this.lblImagemProduto.setIcon(new ImageIcon(getClass().getResource("/Imagens/corda.png")));
         
+        
+        
+        
     }//GEN-LAST:event_btnCordasActionPerformed
 
     private void btnTeclaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeclaActionPerformed
